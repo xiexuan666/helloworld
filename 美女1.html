@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="first">
+        <input type="button" value="小埋1" data-src="../imges/timg (1).jfif">
+        <input type="button" value="小埋2" data-src="../imges/timg (2).jfif">
+        <input type="button" value="小埋3" data-src="../imges/timg (3).jfif">
+        <input type="button" value="小埋4" data-src="../imges/timg (4).jfif">
+        <input type="button" value="小埋5" data-src="../imges/timg.jfif">
+        <div class="second">
+            <img src="../imges/timg (1).jfif" alt="" id="img">
+        </div>
+    </div>
+</body>
+<script>
+    var btns = document.getElementsByTagName('input');
+    var img = document.getElementById('img');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function () {
+            img.src = this.dataset.src;
+        }
+    }
+</script>
+
+</html>

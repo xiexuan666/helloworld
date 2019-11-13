@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weibo">
+        <textarea class="weibo-text"></textarea>
+        <input class="weibo-btn" value="发布" type="button">
+        <ul class="weibo-list">
+            <li>
+                <p>小埋小埋小埋小埋小埋</p>
+                <span>删除</span>
+            </li>
+            <li>
+                <p>朋友问我溺水三千支取一瓢是什么意思我说世界之大我只要他</p>
+                <span>删除</span>
+            </li>
+            <li>
+                <p>1野搏7死你</p>
+                <span>删除</span>
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script>
+    // 获取元素
+    let btn = document.querySelector('.weibo-btn');
+    let text = document.querySelector('.weibo-text');
+    let list = document.querySelector('.weibo-list');
+    // 注册点击事件
+    btn.onclick = function () {
+        let content = text.value;
+        // 创建新的li，放到ul里面去
+        let li = document.createElement('li');
+        // 给li添加内容
+        li.innerHTML = '<p>' + content + '</p><span>删除</span>';
+        // 手动添加放到最前面
+        let first = document.querySelector('li:first-child');
+        list.insertBefore(li, first);
+        // 把文本清空
+        text.value = '';
+        // 再次事件
+       regDelEvent();
+    }
+    // 实现删除
+    function regDelEvent() {
+        let dels = document.querySelectorAll('.weibo-list span');
+        for (let i = 0; i < dels.length; i++) {
+            dels[i].onclick = function () {
+            list.removeChild (this.parentNode);
+            }
+        }
+
+    }
+    regDelEvent ();
+//    给文本注册键盘事件
+  text.onkeydown= function (a) {
+    if (a.  keyCode=== 13 &&  a.ctrlKey )   //判断是否按下了 ctrl + 回车
+    btn.onclick ();  //然后给文本的发布实现效果
+  }
+
+
+
+
+
+</script>
+
+</html>

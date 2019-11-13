@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .turntable {
+            width: 660px;
+            height: 660px;
+            background-image: url('../imges/panze.png');
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .pointer {
+            width: 338px;
+            height: 338px;
+            background-image: url('../imges/zhizhen.png');
+            background-repeat: no-repeat;
+            background-position: center top;
+            position: absolute;
+            top: 129px;
+            left: 152px;
+            transition: transform 500ms linear;
+        }
+
+        .begin {
+            width: 138px;
+            height: 138px;
+            position: absolute;
+            top: 227px;
+            left: 252px;
+            border-radius: 50%;
+            /* background-color: rgba(255,0,0,.5); */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="turntable">
+        <div class="pointer"></div>
+        <div class="begin"></div>
+    </div>
+
+</body>
+<script>
+// 获取元素
+var begin = document.querySelector ('.begin');
+var pointer  = document.querySelector ('.pointer');
+// 注册事件
+begin.addEventListener  ('click', function fn () {
+// 解绑事件
+begin.removeEventListener ('click', fn);
+
+
+// 获取角度
+var r = Math.random () * 360;
+// 修改 指针的transform属性
+pointer.style.transform = 'rotate('+ r +'deg)';
+
+})
+</script>
+
+
+</html>
